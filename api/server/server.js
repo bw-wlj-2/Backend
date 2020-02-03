@@ -1,6 +1,7 @@
 //imports
 const express = require('express');
 const session= require('express-session')
+const authRouter= require('../auth/authRouter')
 
 //variables
 const server= express()
@@ -20,7 +21,7 @@ const sessionConfig={
 server.use(express.json());
 server.use(session(sessionConfig))
 
-server.use()
+server.use('/api/auth', authRouter)
 server.use()
 
 //exports
