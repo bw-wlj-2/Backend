@@ -9,19 +9,24 @@ const router = require("express").Router();
 
 //code
 //register
-router.post("/register", (req, res) => {
-  const user = req.body;
-  const hash = bc.hashSync(user.password, 8);
-  user.password = hash;
-  users
-    .add(user)
-    .then((user) => {
-      res.status(201).json(user);
-    })
-    .catch((err) => {
-      res.status(500).json({ error: "could not create account" });
-    });
-});
+router
+  .post("/register", (req, res) => {
+    const user = req.body;
+    console.log(user);
+    const hash = bc.hashSync(user.password, 8);
+    user.password = hash;
+    users
+      .add(user)
+      .then((user) => {
+        res.status(201).json(user);
+      })
+      .catch((err) => {
+        res.status(500).json({ error: "could not create account" });
+      });
+  })
+  .catch((err) => {
+    res.status(500).json({ error: "could not create account" });
+  });
 //login
 router.post("/login", (req, res) => {
   let { username, password } = req.body;

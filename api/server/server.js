@@ -2,12 +2,13 @@
 const express = require("express");
 const session = require("express-session");
 const authRouter = require("../auth/authRouter");
+const authenticate = require("../auth/session");
 
 //variables
 const server = express();
 const sessionConfig = {
   name: "session",
-  secret: process.env.SESSION_SECRET || "keep it secret, keep it safe!",
+  secret: process.env.SESSION_SECRET || "secret",
   cookie: {
     maxAge: 1000 * 60 * 10, // 10 minutes in ms
     secure: false, // set to true in production, only send cookies over HTTPS
@@ -23,8 +24,9 @@ server.use(session(sessionConfig));
 
 server.use("/api/auth", authRouter);
 // tester
+
 server.get("/", (req, res) => {
-  res.json({ message: "Api is working!!!" });
+  res.status(201).json({ working: "true" });
 });
 
 //exports
