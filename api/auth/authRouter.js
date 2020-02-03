@@ -1,6 +1,7 @@
 //imports
 const bc= require('bcryptjs')
 const users= require('../models/userModel')
+const restricted= require('./session')
 
 //variables
 const router= require('express').Router()
