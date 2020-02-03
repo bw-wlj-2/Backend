@@ -10,6 +10,7 @@ const router= require('express').Router()
     //register
     router.post('/register', (req, res)=>{
         const user= req.body
+        console.log(user)
         const hash= bc.hashSync(user.password, 8)
         user.password= hash
         users.add(user)
