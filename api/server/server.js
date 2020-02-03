@@ -24,5 +24,10 @@ server.use(session(sessionConfig))
 
 server.use('/api/auth', authRouter)
 
+
+server.get('/', (req, res) => {
+    res.status(201).json({working: 'true'})
+  });
+
 //exports
 module.exports = server;
