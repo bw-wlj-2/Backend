@@ -23,14 +23,14 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "knex": "^0.20.8",
-    "sqlite3": "^4.1.1"
+    "sqlite3": "^4.1.1",
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0",
     "jest": "^25.1.0",
     "nodemon": "^2.0.2"
   },
-  "jest":{
+  "jest": {
     "testEnvirnoment": "node"
   }
 }
