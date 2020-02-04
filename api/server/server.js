@@ -4,6 +4,7 @@ const session = require("express-session");
 const authRouter = require("../auth/authRouter");
 const exerciseRouter = require("../../exercises/exercises-router");
 const authenticate = require("../auth/session");
+const cors= require('cors')
 
 //variables
 const server = express();
@@ -22,6 +23,7 @@ const sessionConfig = {
 //code
 server.use(express.json());
 server.use(session(sessionConfig));
+server.use(cors())
 server.use("/api/user", authRouter);
 server.use("/api/exercises", exerciseRouter);
 // tester
