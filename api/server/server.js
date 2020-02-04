@@ -22,7 +22,7 @@ const sessionConfig = {
 //code
 server.use(express.json());
 server.use(session(sessionConfig));
-server.use("/api/auth", authRouter);
+server.use("/api/user", authRouter);
 server.use("/api/exercises", exerciseRouter);
 // tester
 server.get("/", (req, res) => {
