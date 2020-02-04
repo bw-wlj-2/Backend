@@ -38,7 +38,7 @@ module.exports = {
 			tableName: 'dbmigrations',
 			directory: './api/database/migrations'
 		},
-		seeds: { directory: './data/seeds' }
+		seeds: { directory: './api/database/seeds' }
 	}
 
 };
