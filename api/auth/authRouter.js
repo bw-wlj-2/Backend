@@ -47,6 +47,46 @@ router.post("/login", (req, res) => {
       res.status(500).json({ error: "unable to login" });
     });
 });
+//delete account
+router.delete('/:id', restricted,(req, res) => {
+  const { id } = req.params;
+  users.remove(id)
+  .then(deleted => {
+    if (deleted) {
+      res.json({ message: 'Account deleted'});
+    } else {
+      res.status(404).json({ message: 'Could not find user with given id' });
+    }
+  })
+  .catch(err => {
+    res.status(500).json({ message: 'Failed to delete user' });
+  });
+});
+//update account
+router.put('/:id', restricted, (req, res) => {
+  const { id } = req.params;
+  let changes = req.body;
+  if (!changes.username) {
+    res.status(422).json({ error: 'Missing username' });
+  }
+  if (!changes.avatarUrl) {
+    res.status(422).json({ error: 'Missing avatar url' });
+  }
+  if (!changes.location) {
+    res.status(422).json({ error: 'Missing location' });
+  }
+  users.update(id, changes)
+    .then((updated) => {
+      if (updated) {
+        res.status(200).json({ success: true, updated });
+      } else {
+        res.status(404).json({ error: 'Unable to update user' });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
 
 function signToken(user) {
   const payload = {

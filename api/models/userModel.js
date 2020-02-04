@@ -4,7 +4,9 @@ module.exports={
     add,
     get,
     getBy,
-    getById
+    getById,
+    remove,
+    update
 }
 
 function add(user){
@@ -28,3 +30,20 @@ function getById(id){
         .where({id})
         .first()
 }
+
+function remove(user){
+    return db('users')
+        .delete(user.id)
+}
+
+function update(id, changes) {
+    return db('users')
+      .where('id', id)
+      .update(changes)
+      .then((ids) => {
+        const [id] = ids;
+        return db('users')
+          .where({ id })
+          .first();
+      });
+  }
