@@ -45,13 +45,14 @@
 ## Exercise Endpoints
 
 - `GET /api/exercises` - gets a list of all the exercises
+- `GET /api/exercises/users/:id` - gets all exercises created by that user id
 - `GET /api/exercises/:id` - gets a single exercise
 - `GET /api/exercises/regions/:region` - gets all exercises for a certain region
 - `POST /api/exercises` - adds a new exercise
 - `PUT /api/exercises/:id` - can update an exercise
 - `DELETE /api/exercises/:id` - deletes a single exercise
 
-# Example
+## Example
 
 {
 "name": "Pull Ups",
