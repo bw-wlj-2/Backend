@@ -64,7 +64,10 @@ router.get("/regions/:region", restricted, (req, res) => {
 //* POST REQUEST ==> /api/exercises ======================================
 router.post("/", restricted, (req, res) => {
   const newexercise = req.body;
-  console.log(req.body);
+  const {id}= req.token
+  // console.log(id)
+  newexercise.user_id= id
+  console.log(newexercise)
   if (!newexercise.name) {
     res.status(422).json({ message: "Missing fields: name" });
   }
