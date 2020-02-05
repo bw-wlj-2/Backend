@@ -28,6 +28,7 @@
 
 ## User Endpoints
 
+- `GET /api/user/:id` - takes an id and returns the account associated with it
 - `POST /api/user/register` - creates an account
 - `POST /api/user/login` - login
 - `DELETE /api/user/:id` - takes user id and removes it from the database
