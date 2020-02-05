@@ -1,7 +1,7 @@
 //imports
 const bc = require("bcryptjs");
 const users = require("../models/userModel");
-const restricted = require("./session");
+const restricted = require("../auth/session");
 const jwt = require("jsonwebtoken");
 
 //variables
@@ -47,6 +47,21 @@ router.post("/login", (req, res) => {
       res.status(500).json({ error: "unable to login" });
     });
 });
+//get by id
+router.get('/:id', (req, res)=>{
+  const id= req.params.id
+  users.getById(id)
+  .then(user => {
+    if(user){
+      res.status(200).json(user)
+    } else {
+      res.status(404).json({ message: 'Could not find user with given id' });
+    }
+  })
+  .catch (err => {
+    res.status(500).json({ message: 'Failed to fetch user' });
+  });
+})
 //delete account
 router.delete('/:id', restricted,(req, res) => {
   const { id } = req.params;
