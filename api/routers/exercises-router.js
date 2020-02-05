@@ -13,6 +13,27 @@ router.get("/", restricted, (req, res) => {
 });
 //* =====================================================================
 
+//* GET REQUEST ==> /api/exercises ======================================
+router.get("/users/:userId", restricted, (req, res) => {
+  const { userId } = req.params;
+  console.log("This is the second UserID ==>", userId);
+  Exercises.findByUserId(userId)
+    .then((exercises) => {
+      console.log(exercises);
+      if (exercises) {
+        res.status(200).json(exercises);
+      } else {
+        res
+          .status(404)
+          .json({ message: "Could not retrieve exercises for that user" });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+//* =====================================================================
+
 //* GET REQUEST ==> /api/exercises/:id ======================================
 router.get("/:id", restricted, (req, res) => {
   Exercises.findById(req.params.id)
