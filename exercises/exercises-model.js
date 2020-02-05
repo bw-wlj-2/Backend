@@ -5,9 +5,18 @@ module.exports = {
   find,
   findByRegion,
   findById,
+  findByUserId,
   update,
   remove,
 };
+
+function findByUserId(userId) {
+  console.log("This is the user ID ==>", userId);
+  return db("exercises")
+    .join("users", "users.id", "exercises.userId")
+    .where("exercises.userId")
+    .select("exercises.*");
+}
 
 function find() {
   return db("exercises").select("*");
