@@ -16,6 +16,7 @@ router.get("/", restricted, (req, res) => {
 //* GET REQUEST ==> /api/exercises ======================================
 router.get("/users/:userId", restricted, (req, res) => {
   const { userId } = req.params;
+  console.log("This is the REQ ==>", req.params);
   console.log("This is the second UserID ==>", userId);
   Exercises.findByUserId(userId)
     .then((exercises) => {
@@ -63,6 +64,7 @@ router.get("/regions/:region", restricted, (req, res) => {
 //* POST REQUEST ==> /api/exercises ======================================
 router.post("/", restricted, (req, res) => {
   const newexercise = req.body;
+  console.log(req.body);
   if (!newexercise.name) {
     res.status(422).json({ message: "Missing fields: name" });
   }

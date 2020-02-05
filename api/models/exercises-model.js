@@ -10,12 +10,18 @@ module.exports = {
   remove,
 };
 
-function findByUserId(userId) {
-  console.log("This is the user ID ==>", userId);
-  return db("exercises")
-    .join("users", "users.id", "exercises.userId")
-    .where("exercises.userId")
-    .select("exercises.*");
+function findByUserId(id) {
+  console.log("This is the user ID ==>", id);
+  return db
+    .select()
+    .from("exercises")
+    .where("user_id", id);
+  // return db("users")
+  //   .join("exercises", "users.id", "exercises.user_id")
+  //   .select("exercises.*");
+  // return db("exercises")
+  //   .join("users", "exercises.user_id", "users.id")
+  //   .select("exercises.*");
 }
 
 function find() {
