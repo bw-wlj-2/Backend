@@ -1,8 +1,8 @@
 //imports
 const express = require("express");
 const session = require("express-session");
-const authRouter = require("../auth/authRouter");
-const exerciseRouter = require("../../exercises/exercises-router");
+const authRouter = require("../routers/authRouter");
+const exerciseRouter = require("../routers/exercises-router");
 const authenticate = require("../auth/session");
 const cors= require('cors')
 

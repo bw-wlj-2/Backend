@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const Exercises = require("./exercises-model.js");
-const restricted = require("../api/auth/session.js");
+const Exercises = require("../models/exercises-model");
+const restricted = require("../auth/session.js");
 //* GET REQUEST ==> /api/exercises ======================================
 router.get("/", restricted, (req, res) => {
   Exercises.find()
