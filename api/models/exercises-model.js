@@ -56,12 +56,7 @@ function update(id, changes) {
   return db("exercises")
     .where("id", id)
     .update(changes)
-    .then((ids) => {
-      const [id] = ids;
-      return db("exercises")
-        .where({ id })
-        .first();
-    });
+    .then( () => findByID( id ) );
 }
 
 function remove(id) {
