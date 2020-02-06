@@ -88,6 +88,7 @@ router.post("/", restricted, (req, res) => {
 router.put("/:id", restricted, (req, res) => {
   const { id } = req.params;
   let changes = req.body;
+  console.log(id)
   if (!changes.name) {
     res.status(422).json({ message: "Missing fields: name" });
   }
