@@ -39,10 +39,8 @@ function update(id, changes) {
     return db('users')
       .where('id', id)
       .update(changes)
-      .then((ids) => {
-        const [id] = ids;
+      .then(() => {
         return db('users')
-          .where({ id })
-          .first();
+        .where('id', id)
       });
   }
