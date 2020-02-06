@@ -36,7 +36,7 @@ function findByRegion(region) {
 
 function findById(id) {
   return db("exercises")
-    .select("*")
+    .select("name", "region", "current_pounds", "reps", "date_completed")
     .where({ id })
     .first();
 }
@@ -56,6 +56,11 @@ function update(id, changes) {
   return db("exercises")
     .where("id", id)
     .update(changes)
+    .then(() => {
+      console.log(id, 'exercise model')
+      return db('exercises')
+      .where('id', id)
+    });
 }
 
 function remove(id) {
