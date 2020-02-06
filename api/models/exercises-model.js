@@ -36,7 +36,7 @@ function findByRegion(region) {
 
 function findById(id) {
   return db("exercises")
-    .select("name", "region")
+    .select("name", "region", "current_pounds", "reps", "date_completed")
     .where({ id })
     .first();
 }
